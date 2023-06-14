@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const conexion = require('../data/db')
 
 const {Schema} = mongoose;
 
@@ -12,11 +13,10 @@ const TareaSchema= new Schema({
         default:false,
     },
     prioridad:{
-        type:number,
+        type:Number,
         defoult:1,
     }
 });
 
-const Tarea=mongoose.model('url',TareaSchema);
- 
-export default Tarea;
+const Tarea=mongoose.models.Tarea || mongoose.model('Tarea', TareaSchema); 
+module.exports = Tarea;
